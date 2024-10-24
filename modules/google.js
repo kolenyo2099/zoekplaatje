@@ -386,7 +386,7 @@ zoekplaatje.register_module(
                         type: 'big-image-carousel',
                         title: safe_prop(item.querySelector('div[role=heading]'), 'innerText')
                     }
-                else if (item.querySelector(selectors.aiOverview)) {
+                } else if (item.querySelector(selectors.aiOverview)) {
                     // AI overview parsing logic
                     parsed_item = {
                         ...parsed_item,
@@ -394,7 +394,7 @@ zoekplaatje.register_module(
                         title: safe_prop(item.querySelector('div[role="heading"], h3'), 'innerText'),
                         description: safe_prop(item.querySelector('.BNeawe, .s3v9rd, div[jsname]'), 'innerText'),
                         link: safe_prop(item.querySelector('a'), 'attr:href')
-                    }
+                    };
                  else {
                     // unrecognised result type
                     // consider logging and fixing...!
