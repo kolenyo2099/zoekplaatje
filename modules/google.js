@@ -30,6 +30,7 @@ zoekplaatje.register_module(
             title: 'h3',
             link: 'span > a',
             description: 'div.VwiC3b, div.ITZIwc, div.xpdopen div.wDYxhc',  // ugh :(
+            aiOverview: 'div[data-attrid="overview"], div[role="complementary"]',
         };
 
         /**
@@ -385,7 +386,16 @@ zoekplaatje.register_module(
                         type: 'big-image-carousel',
                         title: safe_prop(item.querySelector('div[role=heading]'), 'innerText')
                     }
-                } else {
+                else if (item.querySelector(selectors.aiOverview)) {
+                    // AI overview parsing logic
+                    parsed_item = {
+                        ...parsed_item,
+                        type: 'ai-overview',
+                        title: safe_prop(item.querySelector('div[role="heading"], h3'), 'innerText'),
+                        description: safe_prop(item.querySelector('.BNeawe, .s3v9rd, div[jsname]'), 'innerText'),
+                        link: safe_prop(item.querySelector('a'), 'attr:href')
+                    }
+                 else {
                     // unrecognised result type
                     // consider logging and fixing...!
                     console.log('unrecognised', item)
