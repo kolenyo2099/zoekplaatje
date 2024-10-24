@@ -395,7 +395,7 @@ zoekplaatje.register_module(
                         description: safe_prop(item.querySelector('.BNeawe, .s3v9rd, div[jsname]'), 'innerText'),
                         link: safe_prop(item.querySelector('a'), 'attr:href')
                     };
-                 else {
+                } else {
                     // unrecognised result type
                     // consider logging and fixing...!
                     console.log('unrecognised', item)
